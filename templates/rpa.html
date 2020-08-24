@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "navbar2.html" %}
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2><strong>RPA</strong></h2>
+            <ol>
+                <li><a href="/">Home</a></li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- Breadcrumbs Section -->
+<main id="main">
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action">
+      <div class="container text-center" data-aos="zoom-in">
+        <h3>RPA 준비중</h3>
+        <a class="cta-btn" onclick="alert('TEST')">RPA RUN</a>
+      </div>
+    </section><!-- End Call To Action Section -->
+</main>
+{% include "footer.html" %}
+{% endblock %}

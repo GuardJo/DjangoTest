@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "navbar.html" %}
+<!-- ======= Intro Section ======= -->
+<section id="intro">
+    <div class="intro-container">
+        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <div class="carousel-item active" style="background-image: url(static/assets/img/intro-carousel/1.jpg)">
+                    <div class="carousel-container">
+                        <div class="container">
+                            <h2 class="animate__animated animate__fadeInDown">Hello Django!</h2>
+                            <p class="animate__animated animate__fadeInUp">강원대학교 IT대학 컴퓨터정보통신공학과 14학번 조경호입니다.</p>
+                            <a href="#featured-services"
+                               class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url(static/assets/img/intro-carousel/2.jpg)">
+                    <div class="carousel-container">
+                        <div class="container">
+                            <h2 class="animate__animated animate__fadeInDown">14학번이지요</h2>
+                            <p class="animate__animated animate__fadeInUp">네 화석입니다</p>
+                            <a href="#featured-services"
+                               class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url(static/assets/img/intro-carousel/3.jpg)">
+                    <div class="carousel-container">
+                        <div class="container">
+                            <h2 class="animate__animated animate__fadeInDown">컴퓨터공학과</h2>
+                            <p class="animate__animated animate__fadeInUp">컴퓨터정보통신공학이랑 컴퓨터과학이랑 합쳐졌습니다.</p>
+                            <a href="#featured-services"
+                               class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url(static/assets/img/intro-carousel/4.jpg)">
+                    <div class="carousel-container">
+                        <div class="container">
+                            <h2 class="animate__animated animate__fadeInDown">양주 사람입니다.</h2>
+                            <p class="animate__animated animate__fadeInUp">태어난 곳은 남양주 별내면 화접리지만 양주에서 오래 살았습니다.</p>
+                            <a href="#featured-services"
+                               class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url(static/assets/img/intro-carousel/5.jpg)">
+                    <div class="carousel-container">
+                        <div class="container">
+                            <h2 class="animate__animated animate__fadeInDown">덕현고등학교 출신입니다.</h2>
+                            <p class="animate__animated animate__fadeInUp">무려 1회 졸업생이죠.</p>
+                            <a href="#featured-services"
+                               class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </div>
+</section><!-- End Intro Section -->
+
+<main id="main">
+</main>
+{% include "footer.html" %}
+{% endblock %}

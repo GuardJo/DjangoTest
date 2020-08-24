@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "navbar2.html" %}
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>게시글 목록</h2>
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/board_write">게시글 등록</a></li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- Breadcrumbs Section -->
+<main id="main">
+    <!-- ======= Portfolio Details Section ======= -->
+    <section class="portfolio-details" style="padding : 0">
+        <div class="container">
+            <div class="portfolio-description" style="margin-bottom:30px; padding:0;">
+                <div align="center">
+                </div>
+                {% if not rsBoard %}
+                <h2>게시물이 없습니다.</h2>
+                {% endif %}
+                {% for i in rsBoard %}
+                <table style="border : 1px solid silver" width="100%">
+                    <tr>
+                        <td width="75%" align="center"><a href="/board_view?b_no={{ i.b_no }}">{{ i.b_title }}</a></td>
+                        <td width="15%" align="left"><strong>작성자 </strong>{{ i.b_writer }}</td>
+                    </tr>
+                </table>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- End Portfolio Details Section -->
+</main>
+{% include "footer.html" %}
+{% endblock %}

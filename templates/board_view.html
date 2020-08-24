@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "navbar2.html" %}
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>게시글 목록</h2>
+            <ol>
+                <li><a href="/">Home</a></li>
+                {% for i in rsDetail %}
+                <li><a href="/board_edit?b_no={{i.b_no}}">수정</a></li>
+                <li><a href="/board_delete?b_no={{i.b_no}}">삭제</a></li>
+                {% endfor %}
+                <li><a href="/board">게시글 목록</a></li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- Breadcrumbs Section -->
+<main id="main">
+    <!-- ======= Portfolio Details Section ======= -->
+    <section class="portfolio-details" style="padding : 0">
+        <div class="container">
+            <div class="portfolio-description" style="margin-bottom:30px; padding:0;">
+                <div align="center">
+                </div>
+                {% if not rsDetail %}
+                <h2>게시물이 없습니다.</h2>
+                {% endif %}
+                {% for i in rsDetail %}
+                <table width="100%">
+                    <tr style="height:45px;border:solid 1px #dddddd;">
+                        <td width="20%" align="center">제목</td>
+                        <td width="80%" align="left">{{ i.b_title }}</td>
+                    </tr>
+                    <tr style="height:45px;border:solid 1px #dddddd;">
+                        <td width="20%" align="center">작성자</td>
+                        <td width="80%" align="left">{{ i.b_writer }}</td>
+                    </tr>
+                    <tr style="height:45px;border:solid 1px #dddddd;">
+                        <td width="20%" align="center">내용</td>
+                        <td width="80%" align="left">{{ i.b_note }}</td>
+                    </tr>
+                </table>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- End Portfolio Details Section -->
+</main>
+{% include "footer.html" %}
+{% endblock %}
