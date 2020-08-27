@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "navbar2.html" %}
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>앨범</h2>
+            <ol>
+                {% for i in rsDetail %}
+                <li><a href="/">Home</a></li>
+                <li><a href="/album">앨범 목록</a></li>
+                <li><a href="/album_edit?a_no={{ i.a_no }}">앨범 수정</a></li>
+                <li><a href="/album_delete?a_no={{ i.a_no }}">앨범 삭제</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</section><!-- Breadcrumbs Section -->
+<main id="main">
+    <!-- ======= Portfolio Details Section ======= -->
+    <section class="portfolio-details">
+        <div class="container">
+            {% if not rsDetail %}
+            <p>앨범을 찾을 수 없습니다.</p>
+            {% endif %}
+            {% for i in rsDetail %}
+            <div class="portfolio-details-container">
+                <div class="owl-carousel portfolio-details-carousel">
+                    <img src="{% static 'board/photo/' %}{{ i.a_image }}" class="img-fluid" alt="">
+                </div>
+                <div class="portfolio-info">
+                    <h3>{{ i.a_title }}</h3>
+                    <ul>
+                        <li><strong>분류</strong>: {{ i.a_type }}</li>
+                        <li><strong>작성자</strong>: {{ i.a_writer }}</li>
+                        <li><strong>조회수</strong>: {{ i.a_count }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portfolio-description">
+                <h2>{{ i.a_title }}</h2>
+                <p>
+                    {{ i.a_note }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </section><!-- End Portfolio Details Section -->
+</main>
+{% include "footer.html" %}
+{% endblock %}

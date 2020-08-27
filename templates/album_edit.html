@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "navbar2.html" %}
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>앨범 목록</h2>
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/album">앨범 목록</a></li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- Breadcrumbs Section -->
+<main id="main">
+    <!-- ======= Portfolio Details Section ======= -->
+    <section class="portfolio-details" style="padding : 0">
+        <div class="container">
+            <div class="portfolio-description" style="margin-bottom:30px; padding:0;">
+                <div align="center">
+                </div>
+                {% if not rsDetail %}
+                <p>앨범을 찾을 수 없습니다.</p>
+                {% endif %}
+                {% for i in rsDetail %}
+                <form method="post" enctype="multipart/form-data" action="/album_update" id="formAlbum">
+                    {% csrf_token %}
+                    <input type="hidden" name="a_no" value="{{ i.a_no }}">
+                    <table width="100%">
+                        <tr style="height:45px;border:solid 1px #dddddd;">
+                            <td width="20%" align="center">유형</td>
+                            <td width="80%" align="left">
+                                {% if i.a_type == "인물" %}
+                                <input type="radio" name="a_type" value="인물" checked="checked">인물
+                                {% else %}
+                                <input type="radio" name="a_type" value="인물">인물
+                                {% endif %}
+                                {% if i.a_type == "자연" %}
+                                <input type="radio" name="a_type" value="자연" checked="checked">자연
+                                {% else %}
+                                <input type="radio" name="a_type" value="자연">자연
+                                {% endif %}
+                                {% if i.a_type == "기타" %}
+                                <input type="radio" name="a_type" value="기타" checked="checked">기타
+                                {% else %}
+                                <input type="radio" name="a_type" value="기타">기타
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr style="height:45px;border:solid 1px #dddddd;">
+                            <td width="20%" align="center">제목</td>
+                            <td width="80%" align="left"><input type="input" name="a_title" placeholder="제목" value="{{ i.a_title }}"></td>
+                        </tr>
+                        <tr style="height:45px;border:solid 1px #dddddd;">
+                            <td width="20%" align="center">작성자</td>
+                            <td width="80%" align="left"><input type="input" name="a_writer" placeholder="작성자" value="{{ i.a_writer }}"></td>
+                        </tr>
+                        <tr style="height:45px;border:solid 1px #dddddd;">
+                            <td width="20%" align="center">이미지</td>
+                            <td width="80%" align="left">
+                                <input type="file" name="ufile">
+                                <img src="{% static 'board/photo/' %}{{ i.a_image }}" class="img-fluid" alt="">
+                            </td>
+                        </tr>
+                        <tr style="height:45px;border:solid 1px #dddddd;">
+                            <td width="20%" align="center">내용</td>
+                            <td width="80%" align="left"><textarea name="a_note" style="width:100%;"
+                                                                   rows="5">{{ i.a_note }}</textarea></td>
+                        </tr>
+                    </table>
+                    <button onclick="javascript:document.getElementById('formAlbum').submit()">수정</button>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- End Portfolio Details Section -->
+</main>
+{% include "footer.html" %}
+{% endblock %}
